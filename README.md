@@ -22,7 +22,7 @@ A PostgreSQL extension to run the [FastTransfer](https://www.arpe.io/fasttransfe
 
 ## Prerequisites
 
-* Administrator privileges on Windows to copy files to the PostgreSQL installation directory.
+* Sudo/Administrator privileges on Linux/Windows to copy files to the PostgreSQL installation directory.
 * Your **FastTransfer tool binaries**. This extension requires the tool to be installed separately.
 
 ---
