@@ -69,7 +69,6 @@ char *decrypt_password(text *cipher_text, const char *key) {
     Datum result;
     text *txt;
     
-    char *cipher_string = text_to_cstring(cipher_text);
 
     if (SPI_connect() != SPI_OK_CONNECT) {
         ereport(ERROR, (errmsg("Failed to connect to SPI for decryption")));
@@ -89,7 +88,7 @@ char *decrypt_password(text *cipher_text, const char *key) {
 
     if (!isnull) {
         txt = DatumGetTextPP(result);
-        decrypted = text_to_cstring(txt);
+        decrypted = pstrdup(text_to_cstring(txt));
     } else {
         ereport(LOG, (errmsg("pg_fasttransfer: Decryption returned NULL.")));
     }
