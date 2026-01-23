@@ -32,7 +32,7 @@ A PostgreSQL extension to run the [FastTransfer](https://fasttransfer.arpe.io/) 
 This extension requires the **FastTransfer tool** to be installed separately.
 
 Download FastTransfer and get a free trial license here:
-👉 [https://www.arpe.io/get-your-fasttransfer-trial](https://www.arpe.io/get-your-fasttransfer-trial)
+👉 https://fasttransfer.arpe.io/start/
 
 Once downloaded, extract the archive and provide the folder path using the `fasttransfer_path` parameter when calling the `xp_RunFastTransfer_secure` SQL function.
 
