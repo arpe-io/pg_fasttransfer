@@ -1,6 +1,6 @@
 # pg_fasttransfer
 
-A PostgreSQL extension to run the [FastTransfer](https://www.arpe.io/fasttransfer/?v=82a9e4d26595) tool from an SQL function, enabling fast data transfer between databases.
+A PostgreSQL extension to run the [FastTransfer](https://fasttransfer.arpe.io/) tool from an SQL function, enabling fast data transfer between databases.
 
 ![Tuto](assets/pg_fasttransfer.gif)
 
