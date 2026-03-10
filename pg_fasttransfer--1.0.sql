@@ -36,6 +36,8 @@ CREATE OR REPLACE FUNCTION xp_RunFastTransfer_secure(
     settingsfile text DEFAULT NULL,
     mapmethod text DEFAULT NULL,
     license text DEFAULT NULL,
+    loglevel text DEFAULT NULL,
+    nobanner boolean DEFAULT NULL,
     fasttransfer_path text DEFAULT NULL,
     debug boolean DEFAULT false
 )

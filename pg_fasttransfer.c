@@ -130,11 +130,11 @@ xp_RunFastTransfer_secure(PG_FUNCTION_ARGS)
         "--targetserver", "--targetuser", "--targetpassword", "--targettrusted", "--targetdatabase",
         "--targetschema", "--targettable", "--degree", "--method", "--distributekeycolumn",
         "--datadrivenquery", "--loadmode", "--batchsize", "--useworktables", "--runid",
-        "--settingsfile", "--mapmethod", "--license",
+        "--settingsfile", "--mapmethod", "--license", "--loglevel", "--nobanner",
         "__fasttransfer_path"
     };
     const char *bool_params[] = {
-        "--sourcetrusted", "--targettrusted", "--useworktables"
+        "--sourcetrusted", "--targettrusted", "--useworktables", "--nobanner"
     };
     const char *int_params[] = {
         "--degree", "--batchsize"
@@ -164,13 +164,13 @@ xp_RunFastTransfer_secure(PG_FUNCTION_ARGS)
         ereport(ERROR, (errmsg("The function should return a record")));
     
     
-    if (fcinfo->nargs > 34 && !PG_ARGISNULL(34))
+    if (fcinfo->nargs > 36 && !PG_ARGISNULL(36))
     {
-        debug = PG_GETARG_BOOL(34);
+        debug = PG_GETARG_BOOL(36);
     }
     
-    if (fcinfo->nargs > 33 && !PG_ARGISNULL(33)) {
-        pg_path = text_to_cstring(PG_GETARG_TEXT_PP(33));
+    if (fcinfo->nargs > 35 && !PG_ARGISNULL(35)) {
+        pg_path = text_to_cstring(PG_GETARG_TEXT_PP(35));
         #ifdef _WIN32
                 snprintf(binary_path, sizeof(binary_path), "%s\\%s", pg_path, BINARY_NAME);
         #else
@@ -194,7 +194,7 @@ xp_RunFastTransfer_secure(PG_FUNCTION_ARGS)
     appendStringInfo(command, "%s", binary_path);
 
     
-    for (i = 0; i < 33; i++) {
+    for (i = 0; i < 35; i++) {
 
         if (PG_ARGISNULL(i)) continue;
         
