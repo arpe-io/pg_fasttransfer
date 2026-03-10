@@ -277,6 +277,8 @@ xp_RunFastTransfer_secure(
     settingsfile text DEFAULT NULL,
     mapmethod text DEFAULT NULL,
     license text DEFAULT NULL,
+    loglevel text DEFAULT NULL,
+    nobanner boolean DEFAULT NULL,
     fasttransfer_path text DEFAULT NULL,
     debug boolean DEFAULT FALSE
 ) RETURNS TABLE
@@ -304,6 +306,8 @@ SELECT * FROM xp_RunFastTransfer_secure(
     targettable := 'orders',
     loadmode := 'Truncate',
     license := '/tmp/FastTransfer_linux-x64_v0.13.5/FastTransfer.lic',
+    loglevel := 'information',
+    nobanner := false,
     fasttransfer_path := '/tmp/FastTransfer_linux-x64_v0.13.5',
     debug := true
 );
@@ -335,6 +339,8 @@ SELECT * FROM xp_RunFastTransfer_secure(
     loadmode := 'Truncate',
     batchsize := 1048576,
     mapmethod := 'Position',
+    loglevel := 'information',
+    nobanner := true,
     fasttransfer_path := 'D:\sources\FastTransfer',
     debug := true
 );
