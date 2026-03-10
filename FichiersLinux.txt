@@ -1,5 +1,0 @@
-docker cp  C:\Users\PierreAntoineAP\Downloads\pg_fasttransfer-linux-pg16\pg_fasttransfer.so pgdev:/usr/lib/postgresql/16/lib/pg_fasttransfer.so
-
-docker cp  C:\Users\PierreAntoineAP\Downloads\pg_fasttransfer-linux-pg16\pg_fasttransfer--1.0.sql pgdev:/usr/share/postgresql/16/extension/pg_fasttransfer--1.0.sql
-
-docker cp  C:\Users\PierreAntoineAP\Downloads\pg_fasttransfer-linux-pg16\pg_fasttransfer.control pgdev:/usr/share/postgresql/16/extension/pg_fasttransfer.control
