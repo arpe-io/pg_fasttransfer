@@ -1,5 +1,8 @@
 name: Build Windows and Linux DLL/SO
 
+permissions:
+  contents: write
+
 on:
   push:
     tags:
@@ -55,7 +58,7 @@ jobs:
         files: pg_fasttransfer-windows-pg${{ matrix.pg_version }}.zip
         prerelease: false
         draft: false
-        overwrite: true
+        overwrite_files: true
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -95,7 +98,7 @@ jobs:
           files: pg_fasttransfer-linux-pg${{ matrix.pg_version }}.zip
           prerelease: false
           draft: false
-          overwrite: true
+          overwrite_files: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
