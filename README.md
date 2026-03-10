@@ -1,6 +1,6 @@
 # pg_fasttransfer
 
-A PostgreSQL extension to run the [FastTransfer](https://www.arpe.io/fasttransfer/?v=82a9e4d26595) tool from an SQL function, enabling fast data transfer between databases.
+A PostgreSQL extension to run the [FastTransfer](https://fasttransfer.arpe.io/) tool from an SQL function, enabling fast data transfer between databases.
 
 ![Tuto](assets/pg_fasttransfer.gif)
 
@@ -22,7 +22,7 @@ A PostgreSQL extension to run the [FastTransfer](https://www.arpe.io/fasttransfe
 
 ## Prerequisites
 
-* Administrator privileges on Windows to copy files to the PostgreSQL installation directory.
+* Sudo/Administrator privileges on Linux/Windows to copy files to the PostgreSQL installation directory.
 * Your **FastTransfer tool binaries**. This extension requires the tool to be installed separately.
 
 ---
@@ -32,7 +32,7 @@ A PostgreSQL extension to run the [FastTransfer](https://www.arpe.io/fasttransfe
 This extension requires the **FastTransfer tool** to be installed separately.
 
 Download FastTransfer and get a free trial license here:
-👉 [https://www.arpe.io/get-your-fasttransfer-trial](https://www.arpe.io/get-your-fasttransfer-trial)
+👉 https://fasttransfer.arpe.io/start/
 
 Once downloaded, extract the archive and provide the folder path using the `fasttransfer_path` parameter when calling the `xp_RunFastTransfer_secure` SQL function.
 
