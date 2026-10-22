@@ -80,6 +80,7 @@ The **pg\_fasttransfer** extension has been tested and validated on the followin
 
 * PostgreSQL **16**
 * PostgreSQL **17**
+* PostgreSQL **18**
 
 ### Linux (Debian/Ubuntu 22.04 LTS)
 
@@ -235,7 +236,7 @@ SELECT pg_fasttransfer_encrypt('MySecurePassword');
 
 ## Function: xp_RunFastTransfer_secure Usage
 
-This is the main function to execute the FastTransfer tool.
+This is the main function to execute the FastTransfer tool (parameters aligned with **FastTransfer 0.18**).
 It takes various parameters to configure the data transfer operation.
 
 Password arguments (`sourcepassword`, `targetpassword`) will be automatically decrypted.
@@ -283,6 +284,15 @@ xp_RunFastTransfer_secure(
     debug boolean DEFAULT FALSE
 ) RETURNS TABLE
 ```
+
+**Notes on parameters (FastTransfer 0.18):**
+
+* `method` maps to `--parallelmethod` and accepts `None`, `Random`, `DataDriven`, `RangeId`, `Ntile`, `Ctid`, `Physloc`, `Rowid`, `NZDataSlice`, `DBPartition` and `Timepartition`.
+* `DBPartition` runs one transfer per native partition: it requires `sourceschema` and `sourcetable` and cannot be used with `query` or `fileinput`.
+* `Timepartition` takes a tuple in `distributekeycolumn`, e.g. `'(o_orderdate,year,month)'` (supported: `(col,year)`, `(col,year,month)`, `(col,year,month,day)`, `(col,year,week)`).
+* `degree` accepts a positive value, `0` (auto) or a negative value (cores divided by its absolute value).
+* `loglevel` accepts `error`, `warning`, `information`, `debug`.
+* `targetconnectiontype` accepts `clickhousebulk`, `duckdb`, `hanabulk`, `msbulk`, `mysqlbulk`, `nzbulk`, `orabulk`, `oradirect`, `pgcopy`, `teradata`.
 
 ---
 
@@ -366,6 +376,8 @@ The function returns a table with the following columns, providing details about
 | total_columns     | integer | The total number of columns transferred.        |
 | transfer_time_ms | bigint  | Transfer time in milliseconds.                  |
 | total_time_ms    | bigint  | Total execution time in milliseconds.           |
+
+Values that FastTransfer does not report are returned as `-1`. For example, a `pgcopy` to `pgcopy` transfer streams the binary COPY data as is, so FastTransfer does not log the row and column counts.
 
 ---
 

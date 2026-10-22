@@ -102,6 +102,7 @@ char *decrypt_password(text *cipher_text, const char *key) {
 //## Run FastTransfer Function
 //###########################################################################################
 
+PGDLLEXPORT Datum xp_RunFastTransfer_secure(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(xp_RunFastTransfer_secure);
 
 Datum
@@ -153,7 +154,6 @@ xp_RunFastTransfer_secure(PG_FUNCTION_ARGS)
     const char *val = NULL;
     int status;
     text *enc;
-    char *token;
     bool debug = false;
 
     #ifndef _WIN32
@@ -392,6 +392,7 @@ xp_RunFastTransfer_secure(PG_FUNCTION_ARGS)
 //## Encrypt Function
 //###########################################################################################
 
+PGDLLEXPORT Datum pg_fasttransfer_encrypt(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(pg_fasttransfer_encrypt);
 
 Datum
